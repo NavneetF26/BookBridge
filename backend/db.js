@@ -1,4 +1,3 @@
-// backend/db.js
 const mysql = require("mysql2");
 
 // connection pool
