@@ -1,4 +1,3 @@
-// backend/server.js
 const express = require("express");
 const cors = require("cors");
 const db = require("./db");
@@ -14,7 +13,6 @@ app.use(express.urlencoded({ extended: true }));
 
 const PORT = 5000;
 
-// MULTER SETUP
 const uploadFolder = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadFolder)) fs.mkdirSync(uploadFolder);
 
@@ -227,7 +225,7 @@ app.delete("/books/:id", (req, res) => {
     });
 });
 
-// GET COMMENTS WITH VOTES
+// GET COMMENTS
 app.get("/comments/:book_id", (req, res) => {
     const { book_id } = req.params;
 
@@ -310,7 +308,6 @@ app.put("/comments/:id/vote", (req, res) => {
             if (err) return res.status(500).json({ message: err.sqlMessage });
 
             if (!results.length) {
-                // New vote
                 db.query(
                     "INSERT INTO comment_votes (comment_id, user_id, vote) VALUES (?, ?, ?)",
                     [id, user_id, vote],
@@ -501,7 +498,7 @@ app.put("/users/:id/make-admin", (req, res) => {
     );
 });
 
-// 🛒 PLACE ORDER (FIXED)
+// PLACE ORDER 
 app.post("/orders", (req, res) => {
     const { user_id } = req.body;
 
@@ -580,7 +577,7 @@ app.post("/orders", (req, res) => {
 
 
 
-// 📦 GET ORDERS
+// GET ORDERS
 app.get("/orders", (req, res) => {
     const sql = `
         SELECT 
@@ -637,7 +634,6 @@ app.get("/orders", (req, res) => {
     });
 });
 
-// 🛒 GET ORDERS FOR SPECIFIC USER
 app.get("/orders/user/:user_id", (req, res) => {
     const { user_id } = req.params;
 
