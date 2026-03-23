@@ -1,15 +1,12 @@
-// 🔒 BACK BUTTON PROTECTION
 window.addEventListener("pageshow", () => {
     if (!localStorage.getItem("user")) window.location.href = "login.html";
 });
 
-// 🔒 INITIAL CHECK
 const user = JSON.parse(localStorage.getItem("user"));
 if (!user) window.location.href = "login.html";
 
 document.getElementById("userName").innerText = "Hi, " + user.username;
 
-// Logout
 function logout() {
     localStorage.removeItem("user");
     window.location.href = "login.html";
@@ -20,14 +17,13 @@ const API_CART = "http://127.0.0.1:5000/cart";
 const BASE_URL = "http://127.0.0.1:5000";
 
 let books = [];
-let cartItems = []; // 🔥 store cart
+let cartItems = []; 
 
 const container = document.getElementById("books-container");
 const search = document.getElementById("search");
 
-// ==============================
-// 🛒 LOAD CART
-// ==============================
+
+// LOAD CART
 async function loadCart() {
     try {
         const res = await fetch(`${API_CART}/${user.id}`);
@@ -40,9 +36,8 @@ async function loadCart() {
     }
 }
 
-// ==============================
-// 🛒 UPDATE CART COUNT
-// ==============================
+
+// UPDATE CART COUNT
 function updateCartCount() {
     const badge = document.getElementById("cart-count");
     if (badge) {
@@ -50,11 +45,9 @@ function updateCartCount() {
     }
 }
 
-// ==============================
-// 🛒 ADD TO CART
-// ==============================
+
+// ADD TO CART
 async function addToCart(bookId, btn) {
-    // ❌ Prevent duplicate
     const alreadyInCart = cartItems.some(item => item.book_id === bookId);
     if (alreadyInCart) {
         btn.innerText = "Added ✅";
@@ -75,14 +68,10 @@ async function addToCart(bookId, btn) {
         });
 
         const data = await res.json();
-
         if (!res.ok) throw new Error(data.message);
 
-        // ✅ Update UI instantly
         btn.innerText = "Added ✅";
         btn.disabled = true;
-
-        // ✅ Update cart locally
         cartItems.push({ book_id: bookId });
 
         updateCartCount();
@@ -93,9 +82,8 @@ async function addToCart(bookId, btn) {
     }
 }
 
-// ==============================
-// 🔥 LOAD BOOKS
-// ==============================
+
+// LOAD BOOKS
 async function loadBooks() {
     try {
         const res = await fetch(API_BOOKS);
@@ -111,9 +99,8 @@ async function loadBooks() {
     }
 }
 
-// ==============================
-// 🔥 DISPLAY BOOKS
-// ==============================
+
+// DISPLAY BOOKS
 function displayBooks(data) {
     container.innerHTML = "";
 
@@ -150,7 +137,6 @@ function displayBooks(data) {
                 ? BASE_URL + book.image
                 : "https://via.placeholder.com/150";
 
-            // ✅ Check if already in cart
             const alreadyInCart = cartItems.some(item => item.book_id === book.id);
 
             card.innerHTML = `
@@ -173,7 +159,6 @@ function displayBooks(data) {
                 </div>
             `;
 
-            // open book
             card.addEventListener("click", (e) => {
                 if (!e.target.classList.contains("delete-btn") &&
                     !e.target.classList.contains("edit-btn") &&
@@ -182,7 +167,6 @@ function displayBooks(data) {
                 }
             });
 
-            // delete
             const deleteBtn = card.querySelector(".delete-btn");
             if (deleteBtn) {
                 deleteBtn.addEventListener("click", (e) => {
@@ -191,7 +175,6 @@ function displayBooks(data) {
                 });
             }
 
-            // edit
             const editBtn = card.querySelector(".edit-btn");
             if (editBtn) {
                 editBtn.addEventListener("click", (e) => {
@@ -201,7 +184,6 @@ function displayBooks(data) {
                 });
             }
 
-            // 🛒 CART BUTTON
             const cartBtn = card.querySelector(".cart-btn");
             if (cartBtn) {
                 cartBtn.addEventListener("click", (e) => {
@@ -217,17 +199,13 @@ function displayBooks(data) {
     });
 }
 
-// ==============================
-// 🔥 OPEN BOOK
-// ==============================
+// OPEN BOOK
 function openBook(id) {
     localStorage.setItem("selectedBookId", id);
     window.location.href = "book.html";
 }
 
-// ==============================
-// 🔥 SEARCH
-// ==============================
+//  SEARCH
 search.addEventListener("input", () => {
     const value = search.value.toLowerCase();
 
@@ -239,9 +217,7 @@ search.addEventListener("input", () => {
     displayBooks(filtered);
 });
 
-// ==============================
-// 🔥 DELETE BOOK
-// ==============================
+// DELETE BOOK
 async function deleteBook(id) {
     if (!confirm("Delete this book?")) return;
 
@@ -263,19 +239,15 @@ async function deleteBook(id) {
     }
 }
 
-// ==============================
-// 🔥 MY BOOKS
-// ==============================
+//  MY BOOKS
 function loadMyBooks() {
     fetch(`${API_BOOKS}?user_id=${user.id}`)
         .then(res => res.json())
         .then(data => displayBooks(data));
 }
 
-// ==============================
-// 🔥 MENU FUNCTIONS
-// ==============================
 
+// MENU FUNCTIONS
 function toggleMenu(){
     document.getElementById("sideMenu").classList.toggle("active");
     document.getElementById("overlay").classList.toggle("active");
@@ -289,15 +261,12 @@ function goTo(page){
     if(page === "orders") window.location.href = "orders.html";
 }
 
-// set username in menu safely
 if (user && document.getElementById("menuUserName")) {
     document.getElementById("menuUserName").innerText = user.username;
 }
 
-// ==============================
-// 🔥 INITIAL LOAD
-// ==============================
+// INITIAL LOAD
 (async () => {
-    await loadCart();   // 🔥 wait for cart first
+    await loadCart();  
     loadBooks();
 })();
