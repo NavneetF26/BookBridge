@@ -1,38 +1,22 @@
-// admin.js (CLEANED & FIXED)
-
-// ✅ Get admin user
 const user = JSON.parse(localStorage.getItem("user"));
-
-// Redirect if not admin
 if (!user || user.role !== "admin") {
     window.location.href = "index.html";
 }
 
 document.getElementById("adminName").innerText = "Admin: " + (user.username || "Unknown");
 
-// =======================
-// GLOBAL DATA
-// =======================
 let allUsers = [];
 let allBooks = [];
 let allOrders = [];
 
-// =======================
-// LOAD DATA
-// =======================
 async function loadData() {
     try {
-        // USERS
         const usersRes = await fetch("http://127.0.0.1:5000/users");
         allUsers = usersRes.ok ? await usersRes.json() : [];
         if (!usersRes.ok) console.warn("Users endpoint not found:", usersRes.status);
-
-        // BOOKS
         const booksRes = await fetch("http://127.0.0.1:5000/books");
         allBooks = booksRes.ok ? await booksRes.json() : [];
         if (!booksRes.ok) console.warn("Books endpoint not found:", booksRes.status);
-
-        // ORDERS
         const ordersRes = await fetch("http://127.0.0.1:5000/orders");
         allOrders = ordersRes.ok ? await ordersRes.json() : [];
         if (!ordersRes.ok) console.warn("Orders endpoint not found:", ordersRes.status);
@@ -46,17 +30,11 @@ async function loadData() {
     }
 }
 
-// =======================
-// STATS
-// =======================
 function updateStats() {
     document.getElementById("userCount").innerText = "👥 " + (allUsers.length || 0);
     document.getElementById("bookCount").innerText = "📚 " + (allBooks.length || 0);
 }
 
-// =======================
-// USERS
-// =======================
 function renderUsers() {
     const search = (document.getElementById("searchUser").value || "").toLowerCase();
     const role = document.getElementById("filterRole").value;
@@ -117,9 +95,6 @@ function renderUsers() {
         }).join("") || "<p>No users found.</p>";
 }
 
-// =======================
-// BOOKS
-// =======================
 function renderBooks() {
     const search = (document.getElementById("searchBook").value || "").toLowerCase();
     const cat = document.getElementById("filterCategory").value;
@@ -145,9 +120,6 @@ function renderBooks() {
         `).join("") || "<p>No books found.</p>";
 }
 
-// =======================
-// ORDERS
-// =======================
 function renderOrders() {
     const container = document.getElementById("orders-container");
 
@@ -210,18 +182,12 @@ function renderOrders() {
         createSection("🔴 Cancelled Orders", cancelled, "status-cancelled");
 }
 
-// =======================
-// ORDER ACTIONS
-// =======================
 function updateOrder(order_id, action) {
     fetch(`http://127.0.0.1:5000/orders/${order_id}/${action}`, { method: "PUT" })
         .then(res => res.ok ? loadData() : res.json().then(r => console.error(r.message)))
         .catch(err => console.error(`Order ${action} error:`, err));
 }
 
-// =======================
-// USERS & BOOK ACTIONS
-// =======================
 function deleteUser(targetId) {
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -231,7 +197,7 @@ function deleteUser(targetId) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            user_id: user.id   // ✅ VERY IMPORTANT
+            user_id: user.id   
         })
     })
     .then(res => res.json())
@@ -258,18 +224,11 @@ function deleteBook(id) {
       .catch(err => console.error("Delete book error:", err));
 }
 
-// =======================
-// SEARCH & FILTER EVENTS
-// =======================
 document.getElementById("searchUser").addEventListener("input", renderUsers);
 document.getElementById("filterRole").addEventListener("change", renderUsers);
-
 document.getElementById("searchBook").addEventListener("input", renderBooks);
 document.getElementById("filterCategory").addEventListener("change", renderBooks);
 
-// =======================
-// SECTION SWITCHING
-// =======================
 function showSection(section){
     const sections = ['users','books','orders'];
 
@@ -278,7 +237,6 @@ function showSection(section){
             (s===section) ? 'block' : 'none';
     });
 
-    // Controls visibility
     document.getElementById("user-controls").style.display =
         (section === "users") ? "flex" : "none";
 
@@ -286,25 +244,18 @@ function showSection(section){
         (section === "books") ? "flex" : "none";
 }
 
-//Home View
 function goHome(){
     document.getElementById('users-section').style.display='block';
     document.getElementById('books-section').style.display='block';
     document.getElementById('orders-section').style.display='none';
-
-    // SHOW BOTH SIDE BY SIDE
     document.getElementById("user-controls").style.display="flex";
     document.getElementById("book-controls").style.display="flex";
 }
 
-// Logout
 function logout() {
     localStorage.removeItem("user");
     window.location.href = "login.html";
 }
 
-// =======================
-// INIT
-// =======================
 goHome();
 loadData();
