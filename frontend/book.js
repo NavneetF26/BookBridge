@@ -19,7 +19,6 @@ const API_BOOKS = `${API_BASE}/books`;
 const API_COMMENTS = `${API_BASE}/comments`;
 const API_RATINGS = `${API_BASE}/ratings`;
 
-// Book ID check
 const bookId = localStorage.getItem("selectedBookId");
 if (!bookId) {
     alert("No book selected!");
@@ -28,9 +27,8 @@ if (!bookId) {
 
 let replyTo = null;
 
-// ======================
+
 // LOAD BOOK DETAILS
-// ======================
 async function loadBook() {
     try {
         const res = await fetch(`${API_BOOKS}/${bookId}`);
@@ -76,9 +74,8 @@ async function loadBook() {
     }
 }
 
-// ======================
+
 // COMMENTS
-// ======================
 function renderComments(comments, parent = null) {
     return comments
         .filter(c => (c.parent_id || null) == parent)
@@ -170,9 +167,6 @@ async function editComment(id, oldText) {
     }
 }
 
-// ======================
-// 🔥 FIXED VOTING SYSTEM
-// ======================
 async function voteComment(id, type) {
     try {
         const res = await fetch(`${API_COMMENTS}/${id}/vote`, {
@@ -191,16 +185,15 @@ async function voteComment(id, type) {
             return;
         }
 
-        await loadComments(); // 🔥 refresh after vote
+        await loadComments(); 
 
     } catch (err) {
         console.error(err);
     }
 }
 
-// ======================
+
 // RATINGS
-// ======================
 async function loadRating() {
     try {
         const res = await fetch(`${API_RATINGS}/${bookId}?user_id=${user.id}`);
@@ -258,9 +251,8 @@ function highlightStars(value) {
     });
 }
 
-// ======================
-// 🛒 ADD TO CART (DB)
-// ======================
+
+//  ADD TO CART 
 function addToCart(bookId) {
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -281,9 +273,8 @@ function addToCart(bookId) {
     .catch(() => alert("Error adding to cart"));
 }
 
-// ======================
+
 // INITIAL LOAD
-// ======================
 loadBook();
 loadComments();
 loadRating();
