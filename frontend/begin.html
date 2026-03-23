@@ -7,7 +7,6 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap');
 
-/* Reset */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
@@ -98,7 +97,6 @@ body {
     box-shadow: 0 15px 30px rgba(255,126,95,0.7), 0 0 20px rgba(255,255,255,0.4) inset;
 }
 
-/* Book edges */
 .front-page::before,
 .front-page::after {
     content: '';
@@ -140,10 +138,7 @@ const pageWrapper = document.getElementById('pageWrapper');
 
 btn.addEventListener('click', (e) => {
     e.preventDefault();
-    // Flip entire page
     pageWrapper.classList.add('flip');
-
-    // Redirect after animation
     setTimeout(() => {
         window.location.href = 'login.html';
     }, 1000);
