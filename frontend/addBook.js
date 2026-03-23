@@ -1,4 +1,4 @@
-// 🔒 BACK BUTTON / AUTH
+// BACK BUTTON / AUTH
 const user = JSON.parse(localStorage.getItem("user"));
 if (!user) window.location.href = "login.html";
 
@@ -12,12 +12,9 @@ const category = document.getElementById("category");
 const description = document.getElementById("description");
 const imageInput = document.getElementById("imageInput");
 const preview = document.getElementById("preview");
-
-// ✅ Condition Dropdown Options
 const conditions = ["New", "Like New", "Good", "Fair", "Poor"];
 condition_text.innerHTML = conditions.map(c => `<option value="${c}">${c}</option>`).join("");
 
-// Image preview
 imageInput.addEventListener("change", () => {
     const file = imageInput.files[0];
     if (!file) return;
@@ -26,7 +23,6 @@ imageInput.addEventListener("change", () => {
     reader.readAsDataURL(file);
 });
 
-// Add book
 async function addBook() {
     if (!title.value.trim()) return alert("Title is required");
     if (!price.value.trim() || isNaN(price.value)) return alert("Price must be a number");
@@ -43,26 +39,18 @@ async function addBook() {
     if (imageInput.files[0]) {
         formData.append("image", imageInput.files[0]);
     }
-
     try {
         const res = await fetch(API_BOOKS, {
             method: "POST",
             body: formData
         });
-
         const data = await res.json();
-
         if (!res.ok) {
             alert(data.message || "Failed to add book");
             return;
         }
-
-        // ✅ FORCE SUCCESS FLOW
         alert("Book added successfully!");
-
-        // 🔥 HARD REDIRECT (more reliable)
         window.location.replace("index.html");
-
     } catch (err) {
         console.error(err);
         alert("Failed to add book");
