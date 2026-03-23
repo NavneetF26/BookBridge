@@ -7,14 +7,12 @@
 
 <style>
 
-/* PAGE */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #f1fffb;
 }
 
-/* HEADER */
 .header {
     background: #2e7d32;
     color: white;
@@ -24,19 +22,16 @@ body {
     align-items: center;
 }
 
-/* HERO */
 .hero img {
     width: 100%;
     height: 350px;
     object-fit: cover;
 }
 
-/* MAIN */
 .container {
     padding: 40px;
 }
 
-/* BOOK SECTION */
 #bookDetails {
     display: flex;
     gap: 25px;
@@ -48,12 +43,10 @@ body {
     border-radius: 10px;
 }
 
-/* RIGHT SIDE */
 .book-info {
     flex: 1;
 }
 
-/* CARD */
 .card {
     background: white;
     padding: 20px;
@@ -62,7 +55,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* ROW */
 .row {
     display: flex;
     gap: 20px;
@@ -72,7 +64,6 @@ body {
     flex: 1;
 }
 
-/* COMMENTS */
 .comment-input-box {
     display: flex;
     gap: 15px;
@@ -86,7 +77,6 @@ body {
     border: 1px solid #ccc;
 }
 
-/* COMMENTS */
 #commentsList {
     max-height: 400px;
     overflow-y: auto;
@@ -107,7 +97,6 @@ body {
     padding-left: 10px;
 }
 
-/* RATING */
 #stars span {
     font-size: 25px;
     cursor: pointer;
@@ -118,7 +107,6 @@ body {
     opacity: 1;
 }
 
-/* BUTTON */
 button {
     background: #2e7d32;
     color: white;
@@ -138,8 +126,6 @@ button:hover {
 
 <body>
 
-<!-- HEADER -->
-
 <div class="header">
     <h2>Book Details</h2>
     <div>
@@ -148,24 +134,19 @@ button:hover {
     </div>
 </div>
 
-<!-- HERO -->
-
 <div class="hero">
     <img id="heroImage" src="https://via.placeholder.com/1200x350">
 </div>
 
 <div class="container">
 
-<!-- BOOK -->
 <div id="bookDetails"></div>
 
-<!-- DESCRIPTION -->
 <div class="card">
     <h3>Description</h3>
     <p id="descText"></p>
 </div>
 
-<!-- RATING + SELLER -->
 <div class="row">
 
     <div class="card" id="ratingSection">
@@ -187,7 +168,6 @@ button:hover {
 
 </div>
 
-<!-- COMMENTS -->
 <div class="card">
     <h3>Review</h3>
 
