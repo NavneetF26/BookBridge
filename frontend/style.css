@@ -1,6 +1,3 @@
-/* ============================= */
-/* 🔹 GLOBAL RESET */
-/* ============================= */
 * {
     margin: 0;
     padding: 0;
@@ -13,9 +10,6 @@ body {
     color: #2e2e2e;
 }
 
-/* ============================= */
-/* 🔹 NAVBAR */
-/* ============================= */
 header {
     display: flex;
     align-items: center;
@@ -39,9 +33,6 @@ header input {
     gap: 10px;
 }
 
-/* ============================= */
-/* 🔹 BUTTONS */
-/* ============================= */
 .btn {
     background: #66bb6a;
     color: white;
@@ -64,7 +55,6 @@ header input {
     cursor: pointer;
 }
 
-/* General buttons */
 button {
     background: linear-gradient(to right, #4caf50, #81c784);
     border: none;
@@ -79,77 +69,6 @@ button:hover {
     opacity: 0.9;
 }
 
-/* ============================= */
-/* 🔥 SIDE MENU (NO COLOR CHANGE) */
-/* ============================= */
-
-.menu-btn {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 2000;
-}
-
-.side-menu {
-    position: fixed;
-    top: 0;
-    right: -260px;
-    width: 260px;
-    height: 100%;
-    background: #fffaf3; /* matches your theme */
-    box-shadow: -3px 0 10px rgba(0,0,0,0.15);
-    padding: 20px;
-    transition: 0.3s;
-    z-index: 2001;
-}
-
-.side-menu.active {
-    right: 0;
-}
-
-.menu-header h3 {
-    margin: 0;
-    color: #2e7d32; /* same green */
-}
-
-.menu-header p {
-    font-size: 12px;
-    color: #777;
-}
-
-.side-menu a {
-    display: block;
-    padding: 10px 0;
-    cursor: pointer;
-    color: #2e2e2e;
-    text-decoration: none;
-}
-
-.side-menu a:hover {
-    color: #2e7d32;
-}
-
-#overlay {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.3);
-    top: 0;
-    left: 0;
-    display: none;
-    z-index: 2000;
-}
-
-#overlay.active {
-    display: block;
-}
-
-/* ============================= */
-/* 🔥 SIDE MENU (GREEN THEME) */
-/* ============================= */
-
 .menu-btn {
     position: fixed;
     top: 15px;
@@ -160,17 +79,13 @@ button:hover {
     color: white;
 }
 
-/* MENU PANEL */
 .side-menu {
     position: fixed;
     top: 0;
     right: -270px;
     width: 270px;
     height: 100%;
-
-    /* 🌿 GREEN DOMINANT BACKGROUND */
     background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-
     box-shadow: -5px 0 20px rgba(0,0,0,0.15);
     padding: 20px;
     transition: 0.35s ease;
@@ -181,7 +96,6 @@ button:hover {
     right: 0;
 }
 
-/* HEADER */
 .menu-header {
     padding-bottom: 12px;
     border-bottom: 2px solid #81c784;
@@ -190,7 +104,7 @@ button:hover {
 
 .menu-header h3 {
     margin: 0;
-    color: #1b5e20; /* dark green */
+    color: #1b5e20;
     font-size: 18px;
 }
 
@@ -199,33 +113,25 @@ button:hover {
     color: #2e7d32;
 }
 
-/* LINKS (ALWAYS GREEN BUTTONS) */
 .side-menu a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 12px;
     margin: 8px 0;
     border-radius: 12px;
-
-    /* 🔥 GREEN BUTTON LOOK */
     background: linear-gradient(to right, #4caf50, #66bb6a);
     color: white;
-
     text-decoration: none;
     font-weight: 500;
     transition: 0.25s;
 }
 
-/* HOVER (SLIGHTLY DARKER) */
 .side-menu a:hover {
     background: linear-gradient(to right, #2e7d32, #4caf50);
-    color:white;
     transform: translateX(5px) scale(1.02);
 }
 
-/* OPTIONAL: CART BADGE */
 #menu-cart-count {
     background: #1b5e20;
     color: white;
@@ -234,14 +140,12 @@ button:hover {
     font-size: 12px;
 }
 
-/* DIVIDER */
 .side-menu hr {
     border: none;
     border-top: 1px solid #a5d6a7;
     margin: 10px 0;
 }
 
-/* OVERLAY */
 #overlay {
     position: fixed;
     width: 100%;
@@ -257,9 +161,7 @@ button:hover {
 #overlay.active {
     display: block;
 }
-/* ============================= */
-/* 🔹 BOOK CONTAINER */
-/* ============================= */
+
 #books-container {
     display: flex;
     flex-direction: column;
@@ -275,9 +177,6 @@ button:hover {
     padding-bottom: 10px;
 }
 
-/* ============================= */
-/* 🔹 BOOK CARD */
-/* ============================= */
 .book-card {
     min-width: 220px;
     max-width: 220px;
@@ -306,9 +205,6 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* ============================= */
-/* 🔹 BOOK INFO */
-/* ============================= */
 .book-info {
     padding: 12px;
 }
@@ -327,7 +223,6 @@ button:hover {
     font-weight: bold;
 }
 
-/* Buttons inside card (delete/edit) */
 .book-info button {
     margin-top: 8px;
     padding: 5px 10px;
@@ -339,9 +234,6 @@ button:hover {
     background: #b71c1c;
 }
 
-/* ============================= */
-/* 🔹 BADGES & SMALL UI */
-/* ============================= */
 .badge {
     display: inline-block;
     margin-top: 8px;
@@ -357,9 +249,6 @@ button:hover {
     color: rgb(0, 55, 6);
 }
 
-/* ============================= */
-/* 🔹 INPUT FOCUS */
-/* ============================= */
 input:focus,
 textarea:focus,
 select:focus {
@@ -367,9 +256,6 @@ select:focus {
     box-shadow: 0 0 5px #a5d6a7;
 }
 
-/* ============================= */
-/* 🔹 LOGIN PAGE */
-/* ============================= */
 .login-body {
     background: linear-gradient(135deg, #00560b, #38ff48);
     display: flex;
@@ -426,9 +312,6 @@ select:focus {
     background: #1b5e20;
 }
 
-/* ============================= */
-/* 🔹 ROLE SWITCH */
-/* ============================= */
 .role-switch {
     display: flex;
     margin-bottom: 15px;
@@ -460,9 +343,6 @@ select:focus {
     font-weight: bold;
 }
 
-/* ============================= */
-/* 🔹 BOOK DETAILS */
-/* ============================= */
 .details-container {
     display: flex;
     gap: 20px;
@@ -478,9 +358,6 @@ select:focus {
     max-width: 500px;
 }
 
-/* ============================= */
-/* 🔹 COMMENTS */
-/* ============================= */
 .comments-section {
     padding: 20px;
 }
@@ -507,9 +384,6 @@ select:focus {
     padding-left: 10px;
 }
 
-/* ============================= */
-/* 🔹 RATING */
-/* ============================= */
 .rating-section {
     padding: 20px;
 }
