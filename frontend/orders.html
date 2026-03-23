@@ -6,7 +6,6 @@
 </head>
 
 <style>
-/* STATUS BADGES */
 .status-pending{
     background: #fff3cd;
     color: #856404;
@@ -31,7 +30,6 @@
     font-weight: bold;
 }
 
-/* 🔥 LAYOUT FIX */
 .horizontal-orders {
     display: flex;
     flex-direction: row;
@@ -46,7 +44,6 @@
     gap: 15px;
 }
 
-/* Scrollbar only for horizontal */
 .horizontal-orders::-webkit-scrollbar {
     height: 6px;
 }
@@ -57,23 +54,17 @@
 </style>
 
 <body>
-
-<!-- HEADER -->
 <header>
     <h2>📦 My Orders</h2>
-
     <div class="nav-right">
         <a href="index.html" class="btn">Home</a>
         <a href="cart.html" class="btn">Cart</a>
         <button class="logout-btn" onclick="logout()">Logout</button>
     </div>
 </header>
-
-<!-- MAIN -->
 <div id="orders-container" style="padding: 25px;"></div>
-
+    
 <script src="orders.js"></script>
-
 <script>
 function logout() {
     localStorage.removeItem("user");
