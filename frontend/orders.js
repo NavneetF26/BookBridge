@@ -5,9 +5,6 @@ if (!user) window.location.href = "login.html";
 
 const container = document.getElementById("orders-container");
 
-// ==============================
-// 🔥 LOAD ORDERS
-// ==============================
 async function loadOrders() {
     try {
         const res = await fetch(`${API}/orders/user/${user.id}`);
@@ -20,14 +17,10 @@ async function loadOrders() {
             return;
         }
 
-        // GROUP
         const pending = orders.filter(o => o.status === "pending");
         const delivered = orders.filter(o => o.status === "delivered");
         const cancelled = orders.filter(o => o.status === "cancelled");
 
-        // ==============================
-        // SECTION BUILDER
-        // ==============================
         function createSection(title, list, type, statusClass) {
             if (!list.length) return "";
 
@@ -81,10 +74,6 @@ async function loadOrders() {
                 </div>
             `;
         }
-
-        // ==============================
-        // RENDER
-        // ==============================
         container.innerHTML =
         createSection("🟡 Pending Orders", pending, "horizontal", "status-pending") +
         createSection("🟢 Delivered Orders", delivered, "horizontal", "status-delivered") +
@@ -96,9 +85,7 @@ async function loadOrders() {
     }
 }
 
-// ==============================
 // CANCEL ORDER
-// ==============================
 async function cancelOrder(orderId) {
     if (!confirm("Cancel this order?")) return;
 
@@ -106,16 +93,10 @@ async function cancelOrder(orderId) {
     loadOrders();
 }
 
-// ==============================
-// FAKE PAYMENT
-// ==============================
 async function payOrder(orderId) {
     alert("Payment Successful!");
     await fetch(`${API}/orders/${orderId}/deliver`, { method: "PUT" });
     loadOrders();
 }
 
-// ==============================
-// INIT
-// ==============================
 loadOrders();
