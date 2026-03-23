@@ -8,9 +8,8 @@ const API = "http://127.0.0.1:5000";
 
 let cartData = [];
 
-// =======================
+
 // LOAD CART
-// =======================
 async function loadCart() {
     const res = await fetch(`${API}/cart/${user.id}`);
     cartData = await res.json();
@@ -18,9 +17,6 @@ async function loadCart() {
     renderCart();
 }
 
-// =======================
-// RENDER
-// =======================
 function renderCart() {
     const container = document.getElementById("cartItems");
 
@@ -54,9 +50,7 @@ function renderCart() {
     document.getElementById("totalBox").innerText = "Total: ₹" + total;
 }
 
-// =======================
 // REMOVE ITEM
-// =======================
 function removeItem(id) {
     fetch(`${API}/cart/${id}`, {
         method: "DELETE"
@@ -64,9 +58,7 @@ function removeItem(id) {
     .then(() => loadCart());
 }
 
-// =======================
 // CHECKOUT
-// =======================
 function checkout() {
     if (!cartData.length) {
         alert("Cart is empty!");
@@ -89,5 +81,4 @@ function checkout() {
     });
 }
 
-// =======================
 loadCart();
