@@ -5,17 +5,9 @@ const roleBox = document.querySelector(".role-switch");
 let isLogin = true;
 const API_USERS = "http://127.0.0.1:5000/users";
 
-// 🔥 ONLY 2 ROLES
 let selectedRole = "user";
-
-// ==============================
-// 🔥 INITIAL STATE (LOGIN MODE)
-// ==============================
 roleBox.style.display = "none";
 
-// ==============================
-// 🔥 ROLE BUTTON CLICK
-// ==============================
 function setRole(role, btn) {
     selectedRole = role;
 
@@ -25,28 +17,16 @@ function setRole(role, btn) {
     btn.classList.add("active");
 }
 
-// ==============================
-// 🔥 TOGGLE LOGIN / REGISTER
-// ==============================
 toggle.addEventListener("click", () => {
     isLogin = !isLogin;
-
-    // show email only in register
     document.getElementById("email").style.display = isLogin ? "none" : "block";
-
-    // change text
     toggle.innerText = isLogin ? "Register here" : "Login here";
     form.querySelector("button").innerText = isLogin ? "Login" : "Register";
     document.querySelector(".tagline").innerText =
         isLogin ? "Login to continue" : "Create an account";
-
-    // 🔥 show role buttons only in register
     roleBox.style.display = isLogin ? "none" : "flex";
 });
 
-// ==============================
-// 🔥 FORM SUBMIT
-// ==============================
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -56,7 +36,6 @@ form.addEventListener("submit", async (e) => {
 
     try {
         if (isLogin) {
-            // 🔐 LOGIN
             const res = await fetch(`${API_USERS}/login`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -72,7 +51,6 @@ form.addEventListener("submit", async (e) => {
 
             localStorage.setItem("user", JSON.stringify(data));
 
-            // 🔥 redirect based on role
             if (data.role === "admin") {
                 window.location.href = "admin.html";
             } else {
@@ -80,7 +58,6 @@ form.addEventListener("submit", async (e) => {
             }
 
         } else {
-            // 🆕 REGISTER
             if (!email) {
                 alert("Email required!");
                 return;
@@ -105,7 +82,7 @@ form.addEventListener("submit", async (e) => {
             }
 
             alert("Registered successfully!");
-            toggle.click(); // back to login
+            toggle.click(); 
         }
 
     } catch (err) {
