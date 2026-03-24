@@ -89,6 +89,3 @@ BookBridge/
 * Search & filters 🔍
 * Responsive UI 📱
 * Community Discussion Forum
-
----
-
