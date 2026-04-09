@@ -15,9 +15,9 @@ const db = mysql.createPool({
 // test connection
 db.getConnection((err, connection) => {
     if (err) {
-        console.log("❌ DB CONNECTION FAILED:", err);
+        console.log("DB CONNECTION FAILED:", err);
     } else {
-        console.log("✅ MySQL Pool Connected");
+        console.log("MySQL Pool Connected");
         connection.release();
     }
 });
