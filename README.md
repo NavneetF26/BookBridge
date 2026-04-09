@@ -42,47 +42,6 @@ BookBridge is a full-stack web application that allows users to browse, buy, and
 
 ---
 
-## 📂 Project Structure
-
-```id="9c9d94"
-BookBridge/
-│
-├── frontend/
-│   ├── index.html
-│   ├── login.html
-│   ├── admin.html
-│   ├── add.html
-│   ├── editBook.html
-│   ├── cart.html
-│   ├── orders.html
-│   ├── book.html
-│   ├── begin.html
-│   │
-│   ├── main.js
-│   ├── login.js
-│   ├── admin.js
-│   ├── addBook.js
-│   ├── editBook.js
-│   ├── cart.js
-│   ├── orders.js
-│   ├── book.js
-│   └── style.css
-│
-├── backend/
-│   ├── server.js
-│   ├── db.js
-│   ├── package.json
-│   └── package-lock.json
-│
-├── database/
-│   └── tables.sql
-│
-├── .gitignore
-└── README.md
-```
-
----
-
 ## 🧠 Future Improvements
 
 * Payment integration 💳
