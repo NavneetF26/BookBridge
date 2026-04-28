@@ -17,7 +17,7 @@ BookBridge is a full-stack web application that allows users to browse, buy, and
 ### 🛠️ Admin Features
 
 * Add new books
-* Edit existing books
+* View and delete existing books
 * Manage inventory
 * View all orders
 
@@ -30,6 +30,7 @@ BookBridge is a full-stack web application that allows users to browse, buy, and
 * HTML
 * CSS
 * JavaScript
+* Node.js
 
 **Backend**
 
