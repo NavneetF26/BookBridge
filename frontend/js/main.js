@@ -22,8 +22,6 @@ function logout() {
     window.location.href = "login.html";
 }
 
-// ── CART ──────────────────────────────────────────────────────────────────────
-
 async function loadCart() {
     try {
         cartItems = await fetch(`${API_CART}/${user.id}`).then(r => r.json()) || [];
@@ -49,8 +47,6 @@ async function addToCart(bookId, btn) {
         if (el) el.innerText = cartItems.length;
     } catch (err) { console.error(err); alert("Error adding to cart"); }
 }
-
-// ── BOOKS ─────────────────────────────────────────────────────────────────────
 
 async function loadBooks() {
     try {
