@@ -1,7 +1,4 @@
-// backend/db.js
 const mysql = require("mysql2");
-
-// connection pool
 const db = mysql.createPool({
     host: "127.0.0.1",
     user: "root",
@@ -12,8 +9,6 @@ const db = mysql.createPool({
     connectionLimit: 10,
     queueLimit: 0
 });
-
-// test connection
 db.getConnection((err, connection) => {
     if (err) {
         console.log("DB CONNECTION FAILED:", err);
@@ -22,5 +17,4 @@ db.getConnection((err, connection) => {
         connection.release();
     }
 });
-
 module.exports = db;
