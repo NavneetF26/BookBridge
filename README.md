@@ -45,6 +45,5 @@ BookBridge is a full-stack web application that allows users to browse, buy, and
 ## 🧠 Future Improvements
 
 * Payment integration 💳
-* Search & filters 🔍
+* Mobile deployment
 * Responsive UI 📱
-* Community Discussion Forum
