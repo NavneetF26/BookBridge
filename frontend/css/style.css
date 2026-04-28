@@ -55,7 +55,6 @@ button {
 }
 button:hover { opacity: 0.9; }
 
-/* SIDE MENU */
 .menu-btn {
     position: fixed;
     top: 15px; right: 15px;
@@ -126,7 +125,6 @@ button:hover { opacity: 0.9; }
 }
 #overlay.active { display: block; }
 
-/* BOOKS */
 #books-container {
     display: flex;
     flex-direction: column;
@@ -182,7 +180,6 @@ input:focus, textarea:focus, select:focus {
     box-shadow: 0 0 5px #a5d6a7;
 }
 
-/* LOGIN */
 .login-body {
     background: linear-gradient(135deg, #00560b, #38ff48);
     display: flex;
