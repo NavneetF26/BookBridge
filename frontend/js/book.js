@@ -19,8 +19,7 @@ let replyTo = null;
 
 function logout() { localStorage.removeItem("user"); window.location.href = "login.html"; }
 
-// ── BOOK ──────────────────────────────────────────────────────────────────────
-
+// BOOK 
 async function loadBook() {
     try {
         const res = await fetch(`${API_BOOKS}/${bookId}`);
@@ -48,8 +47,7 @@ async function loadBook() {
     }
 }
 
-// ── COMMENTS ─────────────────────────────────────────────────────────────────
-
+// COMMENTS
 function renderComments(comments, parent = null) {
     return comments
         .filter(c => (c.parent_id || null) == parent)
@@ -120,8 +118,7 @@ async function voteComment(id, type) {
     } catch (err) { console.error(err); }
 }
 
-// ── RATINGS ───────────────────────────────────────────────────────────────────
-
+// RATINGS 
 async function loadRating() {
     try {
         const data = await fetch(`${API_RATINGS}/${bookId}?user_id=${user.id}`).then(r => r.json());
@@ -153,8 +150,7 @@ function highlightStars(value) {
     document.querySelectorAll("#stars span").forEach((s, i) => s.classList.toggle("active", i < value));
 }
 
-// ── CART ──────────────────────────────────────────────────────────────────────
-
+// CART 
 function addToCart(id) {
     fetch(`${API_BASE}/cart`, {
         method: "POST",
