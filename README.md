@@ -1,12 +1,12 @@
-# 📚 BookBridge
+# BookBridge
 A Book Exchange app for book lovers with Community Discussion
 BookBridge is a full-stack web application that allows users to browse, buy, and manage books online. It includes a complete frontend interface and a backend powered by Node.js and MySQL.
 
 ---
 
-## 🚀 Features
+## Features
 
-### 👤 User Features
+### User Features
 
 * Register and login system
 * Browse available books
@@ -14,7 +14,7 @@ BookBridge is a full-stack web application that allows users to browse, buy, and
 * Add books to cart
 * Place and view orders
 
-### 🛠️ Admin Features
+### Admin Features
 
 * Add new books
 * View and delete existing books
@@ -23,7 +23,7 @@ BookBridge is a full-stack web application that allows users to browse, buy, and
 
 ---
 
-## 🧱 Tech Stack
+## Tech Stack
 
 **Frontend**
 
