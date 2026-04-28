@@ -8,43 +8,24 @@
 </head>
 
 <body class="login-body">
-
 <div class="login-card">
-
 <h1>📚 Book Bridge</h1>
 <p class="tagline" id="tagline">Login to continue</p>
-
 <form id="loginForm">
-
-    <!-- ROLE SELECT -->
     <div class="role-switch" style="margin-bottom:10px; gap:10px; justify-content:center;">
         <button type="button" onclick="setRole('user', this)" class="active">User</button>
         <button type="button" onclick="setRole('admin', this)">Admin</button>
     </div>
-
-    <!-- USERNAME -->
     <input type="text" id="username" placeholder="Username OR Email" required>
-
-    <!-- REGISTER ONLY -->
     <input type="email" id="email" placeholder="Email" style="display:none;">
-
-    <!-- PASSWORD -->
     <input type="password" id="password" placeholder="Password" required>
-
-    <!-- ADMIN REGISTER ONLY -->
     <input type="password" id="adminKey" placeholder="Admin Secret Key" style="display:none;">
-
-    <!-- BUTTON -->
     <button type="submit" id="submitBtn">Login</button>
-
-    <!-- TOGGLE -->
     <p class="switch-text">
         <span id="switchText">New user?</span> 
         <span id="toggleMode" style="cursor:pointer; color:green;">Register here</span>
     </p>
-
 </form>
-
 </div>
 
 <script src="js/login.js"></script>
