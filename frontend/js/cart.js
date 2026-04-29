@@ -41,7 +41,12 @@ function checkout() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ user_id: user.id })
-    }).then(r => r.json()).then(d => { alert(d.message); loadCart(); });
+    })
+    .then(r => r.json())
+    .then(d => {
+        alert(d.message);
+        window.location.href = "orders.html";
+    });
 }
 
 loadCart();
