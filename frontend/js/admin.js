@@ -118,7 +118,8 @@ function renderOrders() {
 }
 
 function openBook(id) {
-    window.location.href = `book.html?id=${id}`;
+    localStorage.setItem("selectedBookId", id); 
+    window.location.href = "book.html";
 }
 
 function updateOrder(id, action) {
